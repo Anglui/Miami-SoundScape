@@ -1,0 +1,62 @@
+.scrolly {
+    position: relative;
+    display: flex;
+    padding: 1rem;
+    background-color: white;
+}
+
+.writing {
+    position: relative;
+    padding: 0 1rem;
+    margin-top: 20px;
+    margin-left: 50px;
+    background-color: white;
+    z-index: 5;
+}
+
+.chart {
+    position: sticky;
+    top: 85px;
+    margin: 20px;
+    background-color: white;
+    align-self: flex-start;
+    z-index: 1000;
+}
+
+.step {
+    background-color: white;
+    opacity: 0.1;
+    margin: 160px auto 160px auto;
+}
+
+/*.step:first-child {
+    opacity: 1;
+}*/
+
+.step p {
+    margin-bottom: 2rem;
+}
+
+#SonicSimilarities {
+    margin-bottom: 205px;
+}
+
+.step:last-child {
+    margin-bottom: 255px;
+}
+
+.highlightedGold {
+    fill: rgba(253, 188, 52, 0.35);
+}
+
+.highlightedNavy {
+    fill:rgba(80, 50, 255, 0.35);
+}
+
+.hidePoints {
+    fill: rgba(198, 214, 235, 0.075);
+}
+
+.is-active {
+    opacity: 1;
+}
