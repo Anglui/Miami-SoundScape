@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styling/style.css">
+    <link rel="stylesheet" href="/styling/scroll.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <title>Miami SoundScape w/ D3</title>
+</head>
+<body>
+    <header class="header">
+        <h1>Miami SoundScape</h1>
+        <img src="/Assets/DividerWhite.png">
+        <p>A Data-Driven Visual Exploration of the Noise in Miami's Neighborhoods<br>
+            <span style="font-size:12px">Created by Luis Angekes</span></p>
+    </header>
+    <section class="flex-content-row" id="introduction">
+        <div class="intro flex-content-column">
+            <h1 class="sectionTitle">A TALE OF VARIED NEIGHBORHOODS</h1>
+            <img src="/Assets/DividerBlack.png">
+            <p style="margin-top: 100px;">The sounds of Miami are as unique as its people, an eclectic blend of urban hustle and natural beauty. Amidst the roar of car engines and the buzz of construction work, you might hear the unmistakable howl of a peacock or the crow of a rooster, remnants of the city's agricultural past. The rhythmic lapping of gentle tides, the rustling of palm fronds and live oak leaves, the thumping bass emanating from the city's nightlife. Miami is a place where sounds collide and coexist in a way that is truly unique, a celebration of life in all its noisy glory.
+            </p>
+            <p>Like the people who inhabit them, Miami's neighborhoods are characterized by a diverse range of noise levels. Some areas of the city can reach decibel levels that rival the intensity of a loud concert, while others are as quiet as rural towns. Looking at the distribution of sound intensities across the city reveals a multifaceted audio landscape that reflects the many cultural and political influences that have shaped Miami.</p>
+        </div>
+    </section>
+    <div class="flex-content-row">
+        <div class="sectionDivider flex-content-column">
+            <h1 class="sectionTitle">URBAN - SUBURBAN SOUND DIVDE</h1>
+            <img src="/Assets/DividerBlack.png">
+        </div>
+    </div>
+    <section class="scrolly" id="GeneralNoiseSection">
+        <div class="writing">
+            <div class="step" id="GettingStarted">
+                <p>This is the distribution of sound intensity across all of Miami. Darker regions indicate a greater number of observations of a given sound intensity. Lighter regions tell us the opposite.</p>
+                <p>We can see that the most commonly observed intensities in Miami are between 50 and 60 dB.</p>
+                <p>But is this due to the fact that there are more Suburban neighborhoods than Urban neighborhoods, therefore making it more likely to be in a quieter area? Or is there overlap in the level of noise between the two areas?</p>
+            </div>
+            <hr class="rounded">
+            <div class="step" id="SuburbanOverview">
+                <p>If we look at the data for all Suburban areas, we see that the sound intensities span the entire range, not just the quieter end.</p>
+                <p>A good chunk of the observed sound intensities lie in the low-to-mid 50s range. In fact, the median for all of the suburbs is 54 dB.</p>
+                <p>Perhaps surprisingly, there is also a sizeable amount of observations that are greater than 65 dB. Prolongued exposure to sounds above this threshold can damage hearing.</p>
+            </div>
+            <hr class="rounded">
+            <div class="step" id="UrbanOverview">
+                <p>By comparison noise in Urban areas has a smaller spread but is centered around a louder median of 58 dB.</p>
+                <p>Visually, it seems there is quiet a bit of overlap between the two areas. The difference between their centers might also seem insignificant.</p>
+                <p>However, a Kolmogrov-Smirnov test shows that despite the large spread, the Suburbs are actually quieter than the Urban Core.</p>
+                <p>The difference between the two medians may seem mathematically small, but an increase of just 3 dB is perceivably louder. In fact, a gain of 3 dB increases the sound intensity by twice as much!</p>
+            </div>
+        </div>
+        <div class="chart" id="OverviewPlot"></div> 
+    </section>
+    <div class="flex-content-row">
+        <div class="sectionDivider flex-content-column">
+            <h1 class="sectionTitle">THREE BEDROOMS IN A GOOD NEIGHBORHOOD?</h1>
+            <img src="/Assets/DividerBlack.png">
+        </div>
+    </div>
+    <section class="scrolly" id="SuburbanNoiseSection">
+        <div class="writing">
+            <div class="step" id="AllSuburbs">
+                <p>Popular thought says that the suburbs are more quiet than the city. The data for the suburbs as a whole suggests as much.</p>
+                <p>If we look more closely, we’ll see that isn’t entirely true. There are several factors that affect the amount of noise in a given neighborhood.</p>
+                <p>Areas with more trees and smaller roads tend to be more quiet than those with less trees and major arterials. Social and cultural factors also play a role in the type and strength of sounds.</p>
+                <p>Each suburb has unique characteristics that create a sonically diverse suburban experience. Let’s start by looking at the most quiet neighborhoods.</p>
+            </div>
+            <hr class="rounded">
+            <div class="step" id="QuietestBurbs">
+                <p class="subSectionTitle">Relative Quiet in the City</p>
+                <p>The quietest neighborhoods are Coconut Grove and The Roads, with a median decibel level of 46 and 48, respectively.</p>
+                <p>It’s no coincidence that the quietest neighborhoods also boast the most robust tree canopy in Miami. Trees don’t just provide shade and shelter for wildlife. They also serve to dampen incoming (or outgoing) noise.</p>
+                <p>Both communities are relatively sheltered from the noise of major roads, though Grand Ave and SW 27th Ave can see spikes in thru traffic during rush hour which helps explain the spread of data in Coconut Grove.</p>
+            </div>
+            <hr class="rounded">
+            <div class="step" id="AverageSuburb">
+                <p class="subSectionTitle">The Average Suburb</p>
+                <p>While the sonic landscape of the suburbs in Miami might differ from those in Suburbiatown, USA, the infrastructural similarities lead to similar results: neighborhoods that aren’t as quiet as you’d expect.</p>
+                <p>Except for Morningside, all of these suburbs have more than one major arterial running through their boundaries. The difference in sound intensity is, quite literally, like night and day depending on the flow of traffic.</p>
+                <p>At night, these suburbs are generally calm and quiet. Sound intensity rarely goes above 51 dB. During the day, however, the soundscape is transformed into a cacophony of horns, engines, brakes, and alarms.</p>
+            </div>
+            <hr class="rounded">
+            <div class="step" id="NoisyBurbs">
+                <p class="subSectionTitle">Noisy Outliers</p>
+                <p>With the airport immediately to the NW, West Flagler finds itself about 1000 feet below a busy flight path. What would otherwise be a relatively quiet neighborhood sees frequent spikes of noise due to low flying planes.</p>
+                <p>The residential areas of Little Havana are in line with average suburban noise levels, but the areas along busy Flagler St and tourist dense Eighth St can be as loud as some urban areas, especially around Domino Park.</p>
+                <p>Grapeland Heights is overall the loudest area of Miami because it is bordered by the airport to the East, the Dolphin Expressway to the South, and a busy maritime corridor to the North.</p>
+                <p>Allapattah is a tale of three areas: the quieter residential zone in the East, the louder warehouse area in its center, and the loudest which has a large number of mechanic shops and is bordered by a busy arterial to the West.</p>
+            </div>
+        </div>
+        <div class="chart" id="SuburbPlot"></div> 
+    </section>
+    <div class="flex-content-row">
+        <div class="sectionDivider flex-content-column">
+            <h1 class="sectionTitle">THE URBAN CORE</h1>
+            <img src="/Assets/DividerBlack.png">
+        </div>
+    </div>
+    <section class="scrolly" id="UrbanNoiseSection">
+        <div class="writing">
+            <div class="step" id="SonicSimilarities">
+                <p class="subSectionTitle">Sonic Similarities</p>
+                <p>Compared to the suburbs, the noise levels in the neighborhoods of the urban core are less spread out, but more similarly concentrated around an overall larger center.</p>
+                <p>It may seem as if all the urban neighborhoods are similar, but there are some structural differences that have huge impacts on the noise its residents are exposed to at different times of the day.</p>
+            </div>
+            <hr class="rounded">
+            <div class="step" id="BimodalBeats">
+                <p class="subSectionTitle">Bimodal Beats</p>
+                <p>Brickell, Downtown, and Edgewater display bimodal distributions of sound.</p>
+                <p>Edgewater and Downtown can both be relatively quiet in the early afternoon and after midnight. However, during rush hour, loud spikes in noise can create disturbances for residents and pedestrians.</p>
+                <p>Brickell is generally noisy at all times of the day in the area West of US1. However, the skyscrapers along the eastern edge of US1 act as an immense noise dampener for the residential buildings along the bay.</p>
+            </div>
+            <hr class="rounded">
+            <div class="step" id="Racism">
+                <p class="subSectionTitle">Structural Racism</p>
+                <p>The most infuriariting, but unsurprising, discovery of this study is that the areas with historically higher Black urban populations were also the loudest.</p>
+                <p>Park West and Omni are two neighborhoods that had a large Black population up until the early 2000s. After developers bought the land, these residents mostly left the area. In their wake is a land filled with the sounds of construction and mostly empty condos in the sky.</p>
+                <p>Unlike these two, most of the residents in Overtown are still Black. The loud noise intensity in the neighborhood can be traced back to the construction of I-95 in the 60s, which was placed directly in the middle of the neighborhood.</p>
+                <p>Then there was the construction of the Dolphin Expressway and I-395, which border Overtown to the North.</p>
+                <p>While there are other neighborhoods that border I-95 (all built through Black neighborhooods), this is one of the busiest interchanges and on-ramps in the city, making Overtown one of the loudest neighborhoods in the city.</p>
+            </div>
+        </div>
+        <div class="chart" id="UrbanPlot"></div> 
+    </section>
+</body>
+<script src="Assets/NoiseOverviewGraph.js"></script>
+<script src="Assets/SuburbanNoiseGraph.js"></script>
+<script src="Assets/UrbanNoiseGraph.js"></script>
+<script src="js/Scrollytell.js"></script>
+</html>
