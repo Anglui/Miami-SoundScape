@@ -1,6 +1,7 @@
 .scrolly {
     position: relative;
     display: flex;
+    justify-content: center;
     padding: 1rem;
     background-color: white;
 }
@@ -11,6 +12,7 @@
     margin-top: 20px;
     margin-left: 50px;
     background-color: white;
+    width: 420px;
     z-index: 5;
 }
 
@@ -28,10 +30,6 @@
     opacity: 0.1;
     margin: 160px auto 160px auto;
 }
-
-/*.step:first-child {
-    opacity: 1;
-}*/
 
 .step p {
     margin-bottom: 2rem;
