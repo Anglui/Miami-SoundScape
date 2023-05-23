@@ -10,7 +10,7 @@ const svg3 = d3
 
 
 // Loading data and main function    
-d3.csv('../SoundData/MasterSoundData.csv').then((data) => {
+d3.csv('SoundData/MasterSoundData.csv').then((data) => {
 
     // Creating urban subset
     const urban = data.filter((d) => d.Type === "Urban");
